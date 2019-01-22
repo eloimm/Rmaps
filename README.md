@@ -1,2 +1,2 @@
 # Rmaps
-Apuntes para visualizar datos en mapas con `R` con`tm_shape()`
+Apuntes para visualizar datos en mapas con `R` con `tm_shape()`
