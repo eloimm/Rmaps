@@ -79,16 +79,14 @@ map3 <- tm_shape(mapa) +
 
 
 
-png(filename = "images/Map1Map2Map3.png")
 grid.newpage()
 pushViewport(viewport(layout=grid.layout(2,3)))
 print(map1, vp=viewport(layout.pos.col = 1, layout.pos.row =1))
 print(map2, vp=viewport(layout.pos.col = 2, layout.pos.row =1))
 print(map3, vp=viewport(layout.pos.col = 3, layout.pos.row =1))
 
-dev.off()
 
-### PER A LA LLEGENDA
+### PER A LA LEyenda?
 g_legend<-function(a.gplot){
   tmp <- ggplot_gtable(ggplot_build(a.gplot))
   leg <- which(sapply(tmp$grobs, function(x) x$name) == "guide-box")
