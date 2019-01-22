@@ -1,4 +1,4 @@
-# Cargamos poligonos del shpaefile
+# Cargamos poligonos del shapefile
 library(rgdal)
 poligons<- readOGR("data/Comarques/shapefiles_catalunya_comarcas.shp",
                    "shapefiles_catalunya_comarcas",
@@ -66,10 +66,17 @@ print(mp1, vp=viewport(layout.pos.col = 1, layout.pos.row =1))
 print(mp2, vp=viewport(layout.pos.col = 2, layout.pos.row =1))
 dev.off()
 
+<<<<<<< HEAD
 # Los valores y colores de la escala nos distorcionan poder comparar los mapas. 
 #Asignamos los rangos y *fijamos* el estilo para cada año
+=======
+# Los valores y escalas de los dos mapas son diferentes! Nos distorsionan poder comparar los mapas.
+
+#Asignamos los rangos 
+>>>>>>> 2f0dc3ae8e6615b8fafc127fc2d2be5d9c62a56b
 breaks <- c(20,60,80,100, 120,140,160,180, 200)
 
+# *fijamos* el estilo para cada año
 map1 <- tm_shape(mapa) + 
   tm_fill("2012", 
           breaks = breaks, palette = "-RdYlGn", style = "fixed")+
@@ -83,7 +90,11 @@ map3 <- tm_shape(mapa) +
   tm_fill("2014", breaks = breaks, palette = "-RdYlGn", style = "fixed")+
   tm_layout(legend.show = FALSE, frame = FALSE, legend.outside=TRUE, legend.outside.position="bottom")
 
+<<<<<<< HEAD
 # Tomamos los valores (p.e del mapa 2014) y los guardamos para la leyenda del mapa
+=======
+# Tomamos los valores (p.e del mapa 2014) y los guardamos para la leyenda del mosaico
+>>>>>>> 2f0dc3ae8e6615b8fafc127fc2d2be5d9c62a56b
 legend.map <- tm_shape(mapa) + 
   tm_fill("2014", title = "Valores",
           breaks = breaks, 
@@ -91,7 +102,11 @@ legend.map <- tm_shape(mapa) +
   tm_layout(legend.only = TRUE)
 
 
+<<<<<<< HEAD
 # Imprimimos y guardamos el mapa como png
+=======
+# Imprimimos y guardamos el mosaico de mapas como .png
+>>>>>>> 2f0dc3ae8e6615b8fafc127fc2d2be5d9c62a56b
 png(filename = "images/Map1Map2Map3Leg.png")
 grid.newpage()
 pushViewport(viewport(layout=grid.layout(2,2)))
@@ -99,4 +114,8 @@ print(map1, vp=viewport(layout.pos.col = 1, layout.pos.row =1))
 print(map2, vp=viewport(layout.pos.col = 2, layout.pos.row =1))
 print(map3, vp=viewport(layout.pos.col = 1, layout.pos.row =2))
 print(legend.map, vp=viewport(layout.pos.row = 2, layout.pos.col = 2))
+<<<<<<< HEAD
 dev.off()
+=======
+dev.off()
+>>>>>>> 2f0dc3ae8e6615b8fafc127fc2d2be5d9c62a56b
