@@ -1,10 +1,6 @@
 # Rmaps
 Apuntes para visualizar datos en mapas con `R` con `tm_shape()`
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE, error = FALSE, results = FALSE)
-```
-
 ## El Shapefile (.shp) del territorio
 Cargamos poligonos del shapefile
 ```{r}
