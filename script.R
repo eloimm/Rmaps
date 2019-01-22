@@ -33,19 +33,26 @@ library(tmap)
 mp1 <- tm_shape(mapa) + 
   tm_fill("2012", # Columna a pintar
           palette = "-RdYlGn")+
-  tm_layout(frame = FALSE)+
-  tm_style("white")
+  tm_layout(frame = FALSE)
 
 mp1
-tmap_save(mp1, filename = "images/2012.png")
+
+# Guardamos en formato .png
+png(filename = "images/2012.png")
+mp1
+dev.off()
 
 # ...però cuando queremos comparar este mapa con el del año 2014...
 # Creamos el mapa 2014
 mp2 <- tm_shape(mapa) + 
     tm_fill("2014", # Columna a pintar
           palette = "-RdYlGn")+
-  tm_layout(frame = FALSE)+
-tmap_save(mp2, filename = "images/2014.png")
+  tm_layout(frame = FALSE)
+mp2
+
+png(filename = "images/2014.png")
+mp2
+dev.off() 
 
 # Los ploteamos uno junto al lado del otro
 library(grid)
@@ -61,41 +68,35 @@ dev.off()
 
 # Los valores y colores de la escala nos distorcionan poder comparar los mapas. 
 #Asignamos los rangos y *fijamos* el estilo para cada año
+breaks <- c(20,60,80,100, 120,140,160,180, 200)
 
 map1 <- tm_shape(mapa) + 
   tm_fill("2012", 
-          breaks = c(25, 50, 75, 100, 125, 150, 175, 200), palette = "-RdYlGn", style = "fixed")+
+          breaks = breaks, palette = "-RdYlGn", style = "fixed")+
   tm_layout(legend.show = FALSE, frame = FALSE)
 
 map2 <-tm_shape(mapa) + 
-  tm_fill("2013", breaks = c(25, 50, 75, 100, 125, 150, 175, 200), palette = "-RdYlGn", style = "fixed")+
+  tm_fill("2013", breaks =  breaks, palette = "-RdYlGn", style = "fixed")+
   tm_layout(legend.show = FALSE, frame = FALSE)
 
 map3 <- tm_shape(mapa) + 
-  tm_fill("2014", breaks = c(25, 50, 75, 100, 125, 150, 175, 200), palette = "-RdYlGn", style = "fixed")+
+  tm_fill("2014", breaks = breaks, palette = "-RdYlGn", style = "fixed")+
   tm_layout(legend.show = FALSE, frame = FALSE, legend.outside=TRUE, legend.outside.position="bottom")
 
+# Tomamos los valores (p.e del mapa 2014) y los guardamos para la leyenda del mapa
+legend.map <- tm_shape(mapa) + 
+  tm_fill("2014", title = "Valores",
+          breaks = breaks, 
+          palette = "-RdYlGn", style = "fixed") +
+  tm_layout(legend.only = TRUE)
 
 
-
-
+# Imprimimos y guardamos el mapa como png
+png(filename = "images/Map1Map2Map3Leg.png")
 grid.newpage()
-pushViewport(viewport(layout=grid.layout(2,3)))
+pushViewport(viewport(layout=grid.layout(2,2)))
 print(map1, vp=viewport(layout.pos.col = 1, layout.pos.row =1))
 print(map2, vp=viewport(layout.pos.col = 2, layout.pos.row =1))
-print(map3, vp=viewport(layout.pos.col = 3, layout.pos.row =1))
-
-
-### PER A LA LEyenda?
-g_legend<-function(a.gplot){
-  tmp <- ggplot_gtable(ggplot_build(a.gplot))
-  leg <- which(sapply(tmp$grobs, function(x) x$name) == "guide-box")
-  legend <- tmp$grobs[[leg]]
-  return(legend)}
-
-mylegend<-g_legend(p1)
-
-p3 <- grid.arrange(arrangeGrob(p1 + theme(legend.position="none"),
-                               p2 + theme(legend.position="none"),
-                               nrow=1),
-                   mylegend, nrow=2,heights=c(10, 1))grid_arrange_shared_legend(map1, map2, map3, map4, map5)
+print(map3, vp=viewport(layout.pos.col = 1, layout.pos.row =2))
+print(legend.map, vp=viewport(layout.pos.row = 2, layout.pos.col = 2))
+dev.off()
