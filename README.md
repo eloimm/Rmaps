@@ -85,7 +85,7 @@ Los ploteamos uno junto al lado del otro
 ```{r}
 library(grid)
 library(gridExtra)
-library(ggplot2)
+
 grid.newpage()
 pushViewport(viewport(layout=grid.layout(1,2)))
 print(mp1, vp=viewport(layout.pos.col = 1, layout.pos.row =1))
