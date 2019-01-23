@@ -90,9 +90,10 @@ grid.newpage()
 pushViewport(viewport(layout=grid.layout(1,2)))
 print(mp1, vp=viewport(layout.pos.col = 1, layout.pos.row =1))
 print(mp2, vp=viewport(layout.pos.col = 2, layout.pos.row =1))
-
+```
 ![](https://github.com/eloimm/Rmaps/blob/master/images/Mp1Mp2.png)
 
+```{r}
 # Para guardarlo como .png
 png(filename = "images/Mp1Mp2.png")
 grid.newpage()
@@ -137,9 +138,10 @@ print(map1, vp=viewport(layout.pos.col = 1, layout.pos.row =1))
 print(map2, vp=viewport(layout.pos.col = 2, layout.pos.row =1))
 print(map3, vp=viewport(layout.pos.col = 1, layout.pos.row =2))
 print(legend.map, vp=viewport(layout.pos.row = 2, layout.pos.col = 2))
-
+```
 ![](https://github.com/eloimm/Rmaps/blob/master/images/Map1Map2Map3Leg.png)
 
+```{r}
 png(filename = "images/Map1Map2Map3Leg.png")
 grid.newpage()
 pushViewport(viewport(layout=grid.layout(2,2)))
