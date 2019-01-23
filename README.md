@@ -103,7 +103,7 @@ print(mp2, vp=viewport(layout.pos.col = 2, layout.pos.row =1))
 dev.off()
 ```
 
-**Los valores y colores de la escala nos distorcionan poder comparar los mapas.**
+**Los valores y colores de la escala nos distorsionan poder comparar los mapas.**
 
 Para solucionarlo debemos asignar los rangos y *fijar* el estilo para cada año
 ```{r}
