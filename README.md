@@ -54,6 +54,7 @@ mp1 <- tm_shape(mapa) +
   tm_layout(frame = FALSE)
 mp1
 ```
+![](https://github.com/eloimm/Rmaps/blob/master/images/2012.png)
 
 Guardamos en formato .png
 ```{r}
