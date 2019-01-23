@@ -2,7 +2,7 @@
 Apuntes para visualizar datos en mapas con `R` con `tm_shape()`
 
 ## El Shapefile (.shp) del territorio
-Cargamos poligonos del shapefile
+Cargamos poligonos del shapefile (Tomamos el archivo de [aquí](https://vangdata.carto.com/tables/shapefiles_catalunya_comarcas/public) donde no aparece el Moianès, comarca creada en 2015)
 ```{r}
 library(rgdal)
 poligons<- readOGR("data/Comarques/shapefiles_catalunya_comarcas.shp",
