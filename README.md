@@ -63,13 +63,7 @@ mp1
 dev.off()
 ```
 
-Retornamos a **imprimir** mapas:
-```{r}
-tmap_mode("plot")
-```
-
 Si queremos compara el mapa de 2012 con el del año 2014...
-
 ```{r}
 # Creamos el mapa 2014
 mp2 <- tm_shape(mapa) + 
@@ -78,6 +72,7 @@ mp2 <- tm_shape(mapa) +
   tm_layout(frame = FALSE)
 mp2
 ```
+![](https://github.com/eloimm/Rmaps/blob/master/images/2014.png)
 
 ```{r}
 # Guardamos el mapa 2014
@@ -95,6 +90,9 @@ grid.newpage()
 pushViewport(viewport(layout=grid.layout(1,2)))
 print(mp1, vp=viewport(layout.pos.col = 1, layout.pos.row =1))
 print(mp2, vp=viewport(layout.pos.col = 2, layout.pos.row =1))
+
+![](https://github.com/eloimm/Rmaps/blob/master/images/Mp1Mp2.png)
+
 # Para guardarlo como .png
 png(filename = "images/Mp1Mp2.png")
 grid.newpage()
@@ -104,7 +102,7 @@ print(mp2, vp=viewport(layout.pos.col = 2, layout.pos.row =1))
 dev.off()
 ```
 
-Los valores y colores de la escala nos distorcionan poder comparar los mapas. 
+**Los valores y colores de la escala nos distorcionan poder comparar los mapas.**
 
 Para solucionarlo debemos asignar los rangos y *fijar* el estilo para cada año
 ```{r}
@@ -131,7 +129,6 @@ legend.map <- tm_shape(mapa) +
   tm_layout(legend.only = TRUE)
 ```
 
-
 Imprimimos y guardamos el mapa como png
 ```{r}
 grid.newpage()
@@ -140,6 +137,9 @@ print(map1, vp=viewport(layout.pos.col = 1, layout.pos.row =1))
 print(map2, vp=viewport(layout.pos.col = 2, layout.pos.row =1))
 print(map3, vp=viewport(layout.pos.col = 1, layout.pos.row =2))
 print(legend.map, vp=viewport(layout.pos.row = 2, layout.pos.col = 2))
+
+![](https://github.com/eloimm/Rmaps/blob/master/images/Map1Map2Map3Leg.png)
+
 png(filename = "images/Map1Map2Map3Leg.png")
 grid.newpage()
 pushViewport(viewport(layout=grid.layout(2,2)))
